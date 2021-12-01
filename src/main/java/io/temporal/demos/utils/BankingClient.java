@@ -8,16 +8,16 @@ import java.time.Duration;
 public class BankingClient {
     public void performWithdraw(Account account, Amount amount, String refId) {
         // simulate some rest api call...
-        Utils.sleep(Duration.ofSeconds(2));
+        // log
     }
 
     public void performDeposit(Account account, Amount amount, String refId) {
         // simulate some rest api call...
-        Utils.sleep(Duration.ofSeconds(2));
+        // log
     }
 
     public void performDepositSimulateError(Account account, Amount amount, String refId) {
-        Utils.sleep(Duration.ofSeconds(2));
+        // log ...
         throw new NullPointerException("Simulated exception during deposit!");
     }
 }

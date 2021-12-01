@@ -14,8 +14,9 @@ public class MoneyTransferWorkflow implements MoneyTransfer {
     private final AccountServices accounts =
             Workflow.newActivityStub(
                     AccountServices.class,
-                    ActivityOptions.newBuilder().setStartToCloseTimeout(Duration.ofSeconds(5))
-                            .setRetryOptions(RetryOptions.newBuilder().setBackoffCoefficient(1).build()).build());
+                    ActivityOptions.newBuilder().setStartToCloseTimeout(Duration.ofSeconds(2))
+                            .setRetryOptions(RetryOptions.newBuilder()
+                                    .setMaximumInterval(Duration.ofSeconds(10)).build()).build());
 
     @Override
     public void transfer(Account from,

@@ -19,6 +19,6 @@ public class AccountServicesActivities implements AccountServices {
 
     @Override
     public void deposit(Account to, Amount amount, String refId) {
-        bankingClient.performDeposit(to, amount, refId);
+        bankingClient.performDepositSimulateError(to, amount, refId);
     }
 }
