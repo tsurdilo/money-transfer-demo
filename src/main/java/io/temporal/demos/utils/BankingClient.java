@@ -5,7 +5,7 @@ import io.temporal.demos.model.Amount;
 
 import java.time.Duration;
 
-public class BankingService {
+public class BankingClient {
     public void performWithdraw(Account account, Amount amount, String refId) {
         // simulate some rest api call...
         Utils.sleep(Duration.ofSeconds(2));

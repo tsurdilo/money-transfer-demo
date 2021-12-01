@@ -1,7 +1,7 @@
 package io.temporal.demos.worker;
 
 import io.temporal.demos.activities.AccountServicesActivities;
-import io.temporal.demos.utils.BankingService;
+import io.temporal.demos.utils.BankingClient;
 import io.temporal.demos.workflow.MoneyTransferWorkflow;
 import io.temporal.worker.Worker;
 import io.temporal.worker.WorkerFactory;
@@ -15,8 +15,8 @@ public class WorkflowWorker {
         WorkerFactory workerFactory = WorkerFactory.newInstance(client);
         Worker worker = workerFactory.newWorker(workflowTaskQueue);
 
-        // Banking service which is to be passed to activities
-        BankingService bankingService = new BankingService();
+        // Banking client which is to be passed to activities
+        BankingClient bankingService = new BankingClient();
 
         // Can be called multiple times
         worker.registerWorkflowImplementationTypes(MoneyTransferWorkflow.class);
