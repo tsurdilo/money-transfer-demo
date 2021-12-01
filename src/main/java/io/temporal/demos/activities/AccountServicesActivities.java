@@ -4,11 +4,11 @@ import io.temporal.demos.model.Account;
 import io.temporal.demos.model.Amount;
 import io.temporal.demos.utils.BankingService;
 
-public class BankingServicesActivities implements BankingServices {
+public class AccountServicesActivities implements AccountServices {
 
     private final BankingService bankingService;
 
-    public BankingServicesActivities(BankingService bankingService) {
+    public AccountServicesActivities(BankingService bankingService) {
         this.bankingService = bankingService;
     }
 

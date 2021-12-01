@@ -1,6 +1,6 @@
 package io.temporal.demos.worker;
 
-import io.temporal.demos.activities.BankingServicesActivities;
+import io.temporal.demos.activities.AccountServicesActivities;
 import io.temporal.demos.utils.BankingService;
 import io.temporal.demos.workflow.MoneyTransferWorkflow;
 import io.temporal.worker.Worker;
@@ -20,7 +20,7 @@ public class WorkflowWorker {
 
         // Can be called multiple times
         worker.registerWorkflowImplementationTypes(MoneyTransferWorkflow.class);
-        worker.registerActivitiesImplementations(new BankingServicesActivities(bankingService));
+        worker.registerActivitiesImplementations(new AccountServicesActivities(bankingService));
 
         workerFactory.start();
     }
