@@ -26,9 +26,9 @@ public class Utils {
     public static final String workflowId = "moneytransferworkflow";
 
     // task queues (server "end-points") that workers listen to
-    public static final String workflowTaskQueue = "workflowTaskQueue";
-    public static final String withdrawTaskQueue = "withdrawTaskQueue";
-    public static final String depositTaskQueue = "depositTaskQueue";
+    public static final String workflowTaskQueue = "moneyTransfer";
+    public static final String withdrawTaskQueue = "moneyTransferWithdraw";
+    public static final String depositTaskQueue = "moneyTransferDeposit";
 
     public static String getWorkflowStatus(WorkflowClient client, String workflowId) {
         WorkflowStub existingUntyped = client.newUntypedWorkflowStub(workflowId, Optional.empty(), Optional.empty());
