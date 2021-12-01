@@ -14,8 +14,6 @@ import static io.temporal.demos.utils.Utils.*;
 
 public class MoneyTransferStarter {
 
-    private static final String workflowId = "moneytransferworkflow";
-
     public static void main(String[] args) {
 
         // "generate" a refId for transaction
@@ -43,6 +41,7 @@ public class MoneyTransferStarter {
 
         System.out.println("> Workflow " + workflowId + " completed. ");
         printWorkflowStatus();
+        printWorkflowExecutionHistory(workflowId);
     }
 
     private static void printWorkflowStatus() {
