@@ -15,6 +15,8 @@ public class MoneyTransferWorkflow implements MoneyTransfer {
             Workflow.newActivityStub(
                     AccountServices.class,
                     ActivityOptions.newBuilder()
+                            // can set a different task queue than workflow
+                            //.setTaskQueue("activityTaskQueue")
                             // max time of single activity execution
                             .setStartToCloseTimeout(Duration.ofSeconds(2))
                             .setRetryOptions(
