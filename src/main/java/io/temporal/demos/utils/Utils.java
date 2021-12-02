@@ -10,7 +10,6 @@ import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowStub;
 import io.temporal.serviceclient.WorkflowServiceStubs;
 
-import java.time.Duration;
 import java.util.Optional;
 
 public class Utils {
@@ -57,15 +56,7 @@ public class Utils {
         GetWorkflowExecutionHistoryResponse getWorkflowExecutionHistoryResponse =
                 service.blockingStub().getWorkflowExecutionHistory(getWorkflowExecutionHistoryRequest);
         for(HistoryEvent historyEvent : getWorkflowExecutionHistoryResponse.getHistory().getEventsList()) {
-            System.out.println("Type: " + historyEvent.getEventType() + " id: " + historyEvent.getEventId());
-        }
-    }
-
-    public static void sleep(Duration duration) {
-        try {
-            Thread.sleep(duration.toMillis());
-        } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(historyEvent.getEventId() + ": " + historyEvent.getEventType());
         }
     }
 }

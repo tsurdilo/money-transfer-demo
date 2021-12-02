@@ -18,10 +18,12 @@ public class MoneyTransferStarter {
 
         // "generate" a refId for transaction
         String refId = UUID.randomUUID().toString();
+        // create some demo accounts and amount to be transferred
         Account fromAccount = new Account(1, "John");
         Account toAccount = new Account(2, "Merry");
         Amount amount = new Amount("USD", 100);
 
+        // Create workflow stub and set options
         MoneyTransfer workflow = client.newWorkflowStub(
                 MoneyTransfer.class,
                 WorkflowOptions.newBuilder()
@@ -30,12 +32,12 @@ public class MoneyTransferStarter {
                         .build()
         );
 
+        // start workflow execution (dont wait for results)
         WorkflowClient.start(workflow::transfer, fromAccount, toAccount, refId, amount);
-
         System.out.println("> Workflow " + workflowId + " started. ");
         printWorkflowStatus();
 
-        // still can connect to WF and get result using untyped:
+        // Connect to WF execution and get result using untyped stub
         WorkflowStub untyped = WorkflowStub.fromTyped(workflow);
         untyped.getResult(Void.class);
 

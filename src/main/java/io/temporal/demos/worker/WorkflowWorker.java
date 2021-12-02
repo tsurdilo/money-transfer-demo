@@ -18,7 +18,7 @@ public class WorkflowWorker {
         // Banking client which is to be passed to activities
         BankingClient bankingService = new BankingClient();
 
-        // Can be called multiple times
+        // register workflow and activities impls
         worker.registerWorkflowImplementationTypes(MoneyTransferWorkflow.class);
         worker.registerActivitiesImplementations(new AccountServicesActivities(bankingService));
 

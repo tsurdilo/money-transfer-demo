@@ -14,8 +14,14 @@ public class MoneyTransferWorkflow implements MoneyTransfer {
     private final AccountServices accounts =
             Workflow.newActivityStub(
                     AccountServices.class,
-                    ActivityOptions.newBuilder().setStartToCloseTimeout(Duration.ofSeconds(2))
-                            .setRetryOptions(RetryOptions.newBuilder()
+                    ActivityOptions.newBuilder()
+                            // max time of single activity execution
+                            .setStartToCloseTimeout(Duration.ofSeconds(2))
+                            .setRetryOptions(
+                                    RetryOptions.newBuilder()
+                                    // max interval between retries
+                                    // used for demo to not have to wait too long between retries
+                                    // (backoffCoefficient default is 2)
                                     .setMaximumInterval(Duration.ofSeconds(10)).build()).build());
 
     @Override
