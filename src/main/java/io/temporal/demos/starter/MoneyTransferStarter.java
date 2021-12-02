@@ -7,6 +7,7 @@ import io.temporal.demos.model.Account;
 import io.temporal.demos.model.Amount;
 import io.temporal.demos.workflow.MoneyTransfer;
 
+import java.time.Duration;
 import java.util.UUID;
 
 import static io.temporal.demos.utils.Utils.*;
@@ -27,8 +28,12 @@ public class MoneyTransferStarter {
         MoneyTransfer workflow = client.newWorkflowStub(
                 MoneyTransfer.class,
                 WorkflowOptions.newBuilder()
+                        // set business-level id
                         .setWorkflowId(workflowId)
+                        // set the task queue for the workflow execution
                         .setTaskQueue(workflowTaskQueue)
+                        // can set workflow execution timeouts, by default its "infinite"
+                        //.setWorkflowExecutionTimeout(Duration.ofMinutes(5))
                         .build()
         );
 
@@ -43,7 +48,6 @@ public class MoneyTransferStarter {
 
         System.out.println("> Workflow " + workflowId + " completed. ");
         printWorkflowStatus();
-        //printWorkflowExecutionHistory(workflowId);
     }
 
     private static void printWorkflowStatus() {
