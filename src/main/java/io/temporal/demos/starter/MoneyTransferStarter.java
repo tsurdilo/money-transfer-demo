@@ -43,7 +43,7 @@ public class MoneyTransferStarter {
 
         System.out.println("> Workflow " + workflowId + " completed. ");
         printWorkflowStatus();
-        printWorkflowExecutionHistory(workflowId);
+        //printWorkflowExecutionHistory(workflowId);
     }
 
     private static void printWorkflowStatus() {
