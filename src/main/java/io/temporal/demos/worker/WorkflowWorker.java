@@ -13,6 +13,7 @@ public class WorkflowWorker {
     public static void main(String[] args) {
 
         WorkerFactory workerFactory = WorkerFactory.newInstance(client);
+        // create worker for our workflow task queue
         Worker worker = workerFactory.newWorker(workflowTaskQueue);
 
         // Banking client which is to be passed to activities
